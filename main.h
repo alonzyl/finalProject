@@ -1,0 +1,6 @@
+#ifndef FINALPROJECT_LIBRARY_H
+#define FINALPROJECT_LIBRARY_H
+
+int main(void);
+
+#endif //FINALPROJECT_LIBRARY_H

@@ -1,0 +1,3 @@
+/Users/alonzyl/Desktop/collage/תכנות מתקדם/projects/untitled folder/untitled/cmake-build-debug/CMakeFiles/untitled.dir
+/Users/alonzyl/Desktop/collage/תכנות מתקדם/projects/untitled folder/untitled/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/alonzyl/Desktop/collage/תכנות מתקדם/projects/untitled folder/untitled/cmake-build-debug/CMakeFiles/rebuild_cache.dir
