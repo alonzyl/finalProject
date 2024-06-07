@@ -21,4 +21,7 @@ void insertDataToEndChessPosArrayWithPosList(chessPosArrayWithPos *lst, chessPos
 int positionToNum(chessPos position);
 
 
+//-----------------validKnightMoves helper functions---------------//
+bool alreadyVisitedPosition(treeNodeListCell *lst, chessPos currPos);
+
 #endif //FINALPROJECT_HELPERSFUNCS_H

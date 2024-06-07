@@ -1,5 +1,6 @@
 #ifndef FINALPROJECT_STRUCTS_H
 #define FINALPROJECT_STRUCTS_H
+#define BOARD_SIZE 5
 
 typedef char chessPos[2];
 
@@ -29,7 +30,26 @@ typedef struct _chessPosList {
     chessPosCell *tail;
 } chessPosList;
 
+struct _treeNodeListCell;
 
-#define BOARD_SIZE 5
+typedef struct _treeNodeList {
+    struct _treeNodeListCell *head;
+    struct _treeNodeListCell *tail;
+} treeNodeList;
+
+typedef struct _treeNode {
+    chessPos position;
+    treeNodeList next_possible_positions;
+} treeNode;
+
+typedef struct _treeNodeListCell {
+    treeNode *node;
+    struct _treeNodeListCell *next;
+} treeNodeListCell;
+
+typedef struct _pathTree {
+    treeNode *root;
+} pathTree;
+
 
 #endif //FINALPROJECT_STRUCTS_H

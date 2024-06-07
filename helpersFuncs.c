@@ -21,7 +21,6 @@ void makeEmptyChessPosArrayWithPos(chessPosArrayWithPos *arr) {
 bool isEmptyChessPosArrayWithPosList(chessPosArrayWithPos lst) {
     return (lst.head == NULL);
 }
-
 // Frees all nodes and their associated data in a list
 void freeChessPosArrayWithPos(chessPosArrayWithPos *lst) {
     chessPosCellWithPos *curr = lst->head, *saver;
@@ -58,13 +57,15 @@ void insertDataBeforeBiggerToChessPosArrayWithPosList(chessPosArrayWithPos *sort
         tmpRunner = tmpRunner->next;
     }
 
+    if (positionToNum(tmpRunner->cell->position) == positionToNum(cell->position)) {
+        return;
+    }
+
     chessPosCellWithPos *newChessPosCellWithPos = createNewChessPosCellWithPos(cell, tmpRunner, originalIndex++);
 
     if (prev != NULL) {
         prev->next = newChessPosCellWithPos;
-    }
-    else
-    {
+    } else {
         sortedChessPosList->head = newChessPosCellWithPos;
     }
 
@@ -89,4 +90,15 @@ int positionToNum(chessPos position) {
     numPosition += CHAR_TO_INT_NUM(position[1]);
 
     return numPosition;
+}
+
+
+//-----------------validKnightMoves helper functions---------------//
+bool alreadyVisitedPosition(treeNodeListCell *lst, chessPos currPos) {
+    while (lst != NULL) {
+        if (lst->node->position[0] == currPos[0] && lst->node->position[1] == currPos[1])
+            return true;
+        lst = lst->next;
+    }
+    return false;
 }

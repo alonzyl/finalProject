@@ -5,19 +5,23 @@
 
 
 // TODO WHEN VALID MOVE TO SAVE chessPosArray ARRAY PROPERLY
-
+//----------------------functions signatures -----------------//
 void findPossibleKnightMoves(int row, int column, chessPosArray *arr);
-
 bool isValidMove(int x, int y);
-
 void freeChessPosArray(chessPosArray ***arr);
-
 chessPosArray ***populateChessPosArray();
-
 chessPosArray ***validKnightMoves();
 
 
+//----------------------functions-----------------//
 void findPossibleKnightMoves(int row, int column, chessPosArray *arr) {
+    /*
+     * Description: The function fill a 2D array with all the possible valid
+     *              positions of a knight from a given position.
+     * Param int row: A row
+     * Param int column: A column
+     * Param chessPosArray: A given chess board positions array.
+     */
 
     // All possible moves of a knight
     int X[8] = {2, 1, -1, -2, -2, -1, 1, 2};
@@ -40,8 +44,8 @@ void findPossibleKnightMoves(int row, int column, chessPosArray *arr) {
             }
 
             arr->size++;
-            arr->positions[logSize][0] = INT_TO_CHAR_NUM(x);
-            arr->positions[logSize][1] = DIGIT_TO_UPPERCASE(y);
+            arr->positions[logSize][0] = DIGIT_TO_UPPERCASE(x);
+            arr->positions[logSize][1] = INT_TO_CHAR_NUM(y);
             logSize++;
         }
     }
@@ -51,8 +55,27 @@ void findPossibleKnightMoves(int row, int column, chessPosArray *arr) {
 
 }
 
-//----------------- helper functions -----------------------//
+chessPosArray ***validKnightMoves()
+{
+    /*
+     * Description: The function creates a 2D chess board of size BOARD_SIZE and for each coordinate
+     *              on the board, it lists all the validate moves that a knight can make from there.
+     *
+     * Return: (chessPosArray) 2D array of chessPos pointer contains valid Knight move list.
+     */
 
+    chessPosArray ***arr = populateChessPosArray();
+
+    int row, column;
+    for (row = 0; row < BOARD_SIZE; row++) {
+        for (column = 0; column < BOARD_SIZE; column++) {
+            findPossibleKnightMoves(row, column, arr[row][column]);
+        }
+    }
+    return arr;
+}
+
+//----------------- helper functions -----------------------//
 bool isValidMove(int row, int column)
 {
     /*
@@ -66,7 +89,6 @@ bool isValidMove(int row, int column)
 
     return row >= 0 && column >= 0 && row < BOARD_SIZE && column < BOARD_SIZE;
 }
-
 
 chessPosArray ***populateChessPosArray()
 {
@@ -96,28 +118,7 @@ chessPosArray ***populateChessPosArray()
     return arr;
 }
 
-
-chessPosArray ***validKnightMoves()
-{
-    /*
-     * Description: The function creates a 2D chess board of size BOARD_SIZE and for each coordinate
-     *              on the board, it lists all the validate moves that a knight can make from there.
-     *
-     * Return: (chessPosArray) 2D array of chessPos pointer contains valid Knight move list.
-     */
-
-    chessPosArray ***arr = populateChessPosArray();
-
-    int row, column;
-    for (row = 0; row < BOARD_SIZE; row++) {
-        for (column = 0; column < BOARD_SIZE; column++) {
-            findPossibleKnightMoves(row, column, arr[row][column]);
-        }
-    }
-    return arr;
-}
-
-
+//   TODO free chess pos array!!!
 void freeChessPosArray(chessPosArray ***arr)
 {
     /*

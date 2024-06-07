@@ -7,4 +7,6 @@ add_executable(untitled main.c
         question1/validKnightMoves.c
         helpersFuncs.c
         question2/displayChessBoard.c
-        question2/displayChessBoard.h)
+        question2/displayChessBoard.h
+        question3/knightPaths.c
+        question3/knightPaths.h)

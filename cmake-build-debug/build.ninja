@@ -73,6 +73,12 @@ build CMakeFiles/untitled.dir/question2/displayChessBoard.c.o: C_COMPILER__untit
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir/question2
 
+build CMakeFiles/untitled.dir/question3/knightPaths.c.o: C_COMPILER__untitled_unscanned_Debug /Users/alonzyl/Desktop/collage/תכנות$ מתקדם/projects/untitled$ folder/untitled/question3/knightPaths.c || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/question3/knightPaths.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/question3
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target untitled
@@ -81,7 +87,7 @@ build CMakeFiles/untitled.dir/question2/displayChessBoard.c.o: C_COMPILER__untit
 #############################################
 # Link the executable untitled
 
-build untitled: C_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.c.o CMakeFiles/untitled.dir/question1/validKnightMoves.c.o CMakeFiles/untitled.dir/helpersFuncs.c.o CMakeFiles/untitled.dir/question2/displayChessBoard.c.o
+build untitled: C_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.c.o CMakeFiles/untitled.dir/question1/validKnightMoves.c.o CMakeFiles/untitled.dir/helpersFuncs.c.o CMakeFiles/untitled.dir/question2/displayChessBoard.c.o CMakeFiles/untitled.dir/question3/knightPaths.c.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
   OBJECT_DIR = CMakeFiles/untitled.dir
   POST_BUILD = :

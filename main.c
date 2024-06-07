@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "question1/validKnightMoves.h"
 #include "question2/displayChessBoard.h"
+#include "question3/knightPaths.h"
 #include "structs.h"
 
 
@@ -16,12 +17,12 @@ int main(void) {
 //        }
 //    }
 
-    chessPosList positions = getUserInput();
-    int i=0;
-    deleteDuplicates(&positions);
-    int t=0;
-    chessPosArrayWithPos test = sortList(positions);
-    int j=0;
+    chessPos temp;
+    temp[0] = 'A';
+    temp[1] = '2';
 
-    return 0;
+    pathTree temp2;
+
+    temp2 = findAllPossibleKnightPaths(&temp);
+    int i=0;
 }
