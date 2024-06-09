@@ -9,4 +9,6 @@ add_executable(untitled main.c
         question2/displayChessBoard.c
         question2/displayChessBoard.h
         question3/knightPaths.c
-        question3/knightPaths.h)
+        question3/knightPaths.h
+        question4/KnightTour.h
+        question4/KnightTour.c)

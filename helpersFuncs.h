@@ -11,6 +11,10 @@
 void checkMemoryAllocation(void *ptr);
 
 
+//-----------------all valid moves a knight can do ---------------//
+int XValidMoves[8];
+int YValidMoves[8];
+
 //-----------------displayChessBoard helper functions---------------//
 void makeEmptyChessPosArrayWithPos(chessPosArrayWithPos *arr);
 bool isEmptyChessPosArrayWithPosList(chessPosArrayWithPos lst);

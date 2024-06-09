@@ -102,3 +102,7 @@ bool alreadyVisitedPosition(treeNodeListCell *lst, chessPos currPos) {
     }
     return false;
 }
+
+
+int XValidMoves[8] = {2, 1, -1, -2, -2, -1, 1, 2};
+int YValidMoves[8] = {1, 2, 2, 1, -1, -2, -2, -1};

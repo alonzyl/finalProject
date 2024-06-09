@@ -2,6 +2,8 @@
 #include "question1/validKnightMoves.h"
 #include "question2/displayChessBoard.h"
 #include "question3/knightPaths.h"
+#include "question4/KnightTour.h"
+
 #include "structs.h"
 
 
@@ -23,6 +25,23 @@ int main(void) {
 
     pathTree temp2;
 
-    temp2 = findAllPossibleKnightPaths(&temp);
-    int i=0;
+//    temp2 = findAllPossibleKnightPaths(&temp);
+//    int i=0;
+
+//    chessPosList *findKnightPathCoveringAllBoard(pathTree *path_tree)
+    chessPos pos;
+    pos[0] = 'A';
+    pos[1] = '1';
+
+    treeNode treeTmp;
+    treeNodeList listTmp;
+
+    treeTmp.position[0] = pos[0];
+    treeTmp.position[1] = pos[1];
+    treeTmp.next_possible_positions = listTmp;
+    pathTree rootTemp;
+    rootTemp.root = &treeTmp;
+
+    findKnightPathCoveringAllBoard(&rootTemp);
+    printf("%d", test);
 }

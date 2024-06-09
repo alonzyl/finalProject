@@ -5,24 +5,26 @@
 #include "../structs.h"
 #include "../question1/validKnightMoves.h"
 
+//----------------------functions signatures -----------------//
 void makeEmptyList(treeNodeList *lst);
-
 bool isEmptyList(treeNodeList lst);
-
 pathTree findAllPossibleKnightPaths(chessPos *startingPosition);
-
 void findAllPossibleKnightPathsRec(treeNode *tNode, chessPosArray ***possibleMoves,bool prevPositions[BOARD_SIZE][BOARD_SIZE]);
-
 void resetArr(bool prevPositions[BOARD_SIZE][BOARD_SIZE]);
-
 void insertTNodeCellToEndList(treeNodeList *lst, chessPos position, treeNodeListCell *next);
-
 treeNode *createTreeNode(chessPos position);
+treeNodeListCell *createTreeNodeListCell(chessPos position, treeNodeListCell *next);
 
 
 
-
+//----------------------functions-----------------//
 pathTree findAllPossibleKnightPaths(chessPos *startingPosition) {
+    /*
+     * Description: The function creates a tree of all the possible knoght ig
+     * Param chessPos *startingPosition:
+     * Return: (pathTree)
+     */
+
     chessPosArray ***possibleMoves = validKnightMoves();
     pathTree resTree;
 
@@ -32,90 +34,42 @@ pathTree findAllPossibleKnightPaths(chessPos *startingPosition) {
     treeNode *root = createTreeNode(*startingPosition);
     resTree.root = root;
 
-    findAllPossibleKnightPathsRec(resTree.root,possibleMoves,prevPositions);
+    findAllPossibleKnightPathsRec(resTree.root, possibleMoves, prevPositions);
 
-    // create pathTree for the given startingPosition
-    // run the recursion func with the root of pathTree
-    //get the full tree from the recursion func and return
     return resTree;
 }
 
-//void findAllPossibleKnightPathsRec(treeNode *tNode, chessPosArray ***possibleMoves,bool prevPositions[BOARD_SIZE][BOARD_SIZE]) {
-//    if (tNode == NULL) {
-//
-//    } else {
-//        chessPosArray validPositions = *possibleMoves[UPPERCASE_TO_DIGIT(tNode->position[0])][CHAR_TO_INT_NUM(tNode->position[1])];
-//
-//        printf("\nall valid positions from (%c%c):\n", tNode->position[0], tNode->position[1]);
-//        prevPositions[UPPERCASE_TO_DIGIT(tNode->position[0])][CHAR_TO_INT_NUM(tNode->position[1])] = true;
-//        for (int i = 0; i <validPositions.size ; ++i) {
-//         printf("\t(%c%c) \n",validPositions.positions[i][0],validPositions.positions[i][1]);
-//        }
-//        printf("\n");
-//
-//        for (int i = 0; i <validPositions.size; ++i) {
-//            if(prevPositions[UPPERCASE_TO_DIGIT(validPositions.positions[i][0])][CHAR_TO_INT_NUM(validPositions.positions[i][1])] == false){
-//                printf("moving from: (%c %c) to: (%c %c) \n",tNode->position[0],tNode->position[1],validPositions.positions[i][0],validPositions.positions[i][1]);
-//                prevPositions[UPPERCASE_TO_DIGIT(validPositions.positions[i][0])][CHAR_TO_INT_NUM(validPositions.positions[i][1])] = true;
-//                insertTNodeCellToEndList(&tNode->next_possible_positions,validPositions.positions[i],NULL);
-//
-//
-//                findAllPossibleKnightPathsRec(tNode->next_possible_positions.head->node, possibleMoves, prevPositions);
-//                prevPositions[UPPERCASE_TO_DIGIT(tNode->position[0])][CHAR_TO_INT_NUM(tNode->position[1])] = false;
-//            }
-//
-//        }
-//        treeNodeListCell *cellRunner = tNode->next_possible_positions.head;
-//        while (cellRunner != NULL) {
-//            findAllPossibleKnightPathsRec(cellRunner->node, possibleMoves, prevPositions);
-//            cellRunner = cellRunner->next;
-//        }
-//        printf("\n");
-//        prevPositions[UPPERCASE_TO_DIGIT(tNode->position[0])][CHAR_TO_INT_NUM(tNode->position[1])] = false;
-//
-//    }
-//}
-
 void findAllPossibleKnightPathsRec(treeNode *tNode, chessPosArray ***possibleMoves,bool prevPositions[BOARD_SIZE][BOARD_SIZE]) {
-    if (tNode == NULL) {
+    /*
+     * Description: The function finds all the possible knight moves from a given position (tNode) and build the subtree of it.
+     * Param treeNode *tNode: A given tree node.
+     * Param chessPosArray ***possibleMoves: An 2D array of possible position.
+     * Param bool prevPositions[BOARD_SIZE][BOARD_SIZE]:
+     */
+    int row = UPPERCASE_TO_DIGIT(tNode->position[0]);
+    int col = CHAR_TO_INT_NUM(tNode->position[1]);
 
-    } else {
-        chessPosArray validPositions = *possibleMoves[UPPERCASE_TO_DIGIT(tNode->position[0])][CHAR_TO_INT_NUM(tNode->position[1])];
+    chessPosArray validPositions = *possibleMoves[row][col];
+    int amountOfMoves = validPositions.size;
 
-//        printf("\nall valid positions from (%c%c):\n", tNode->position[0], tNode->position[1]);
-        prevPositions[UPPERCASE_TO_DIGIT(tNode->position[0])][CHAR_TO_INT_NUM(tNode->position[1])] = true;
-//
-//        for (int i = 0; i <validPositions.size ; ++i) {
-//         printf("\t(%c%c) \n",validPositions.positions[i][0],validPositions.positions[i][1]);
-//        }
-        printf("\n");
+    prevPositions[row][col] = true;
 
-        for (int i = 0; i <validPositions.size; ++i) {
-            if(prevPositions[UPPERCASE_TO_DIGIT(validPositions.positions[i][0])][CHAR_TO_INT_NUM(validPositions.positions[i][1])] == false){
-                printf("moving from: (%c %c) to: (%c %c) \n",tNode->position[0],tNode->position[1],validPositions.positions[i][0],validPositions.positions[i][1]);
-//                prevPositions[UPPERCASE_TO_DIGIT(validPositions.positions[i][0])][CHAR_TO_INT_NUM(validPositions.positions[i][1])] = true;
-                insertTNodeCellToEndList(&tNode->next_possible_positions,validPositions.positions[i],NULL);
+    for (int i = 0; i < amountOfMoves; ++i) {
+        int nextPosRow = UPPERCASE_TO_DIGIT(validPositions.positions[i][0]);
+        int nextPosCol = CHAR_TO_INT_NUM(validPositions.positions[i][1]);
 
-            }
-
+        if (!prevPositions[nextPosRow][nextPosCol]) {
+            insertTNodeCellToEndList(&tNode->next_possible_positions, validPositions.positions[i], NULL);
+            findAllPossibleKnightPathsRec(tNode->next_possible_positions.tail->node, possibleMoves, prevPositions);
         }
-        treeNodeListCell *cellRunner = tNode->next_possible_positions.head;
-        while (cellRunner != NULL) {
-            prevPositions[UPPERCASE_TO_DIGIT(cellRunner->node->position[0])][CHAR_TO_INT_NUM(cellRunner->node->position[1])] = true;
-            findAllPossibleKnightPathsRec(cellRunner->node, possibleMoves, prevPositions);
-            prevPositions[UPPERCASE_TO_DIGIT(cellRunner->node->position[0])][CHAR_TO_INT_NUM(cellRunner->node->position[1])] = false;
-            cellRunner = cellRunner->next;
-        }
-        prevPositions[UPPERCASE_TO_DIGIT(tNode->position[0])][CHAR_TO_INT_NUM(tNode->position[1])] = false;
-
-
-
     }
+
+    prevPositions[row][col] = false;
 }
 
 
 
-
+//----------------- trees helper functions -----------------------//
 treeNode *createTreeNode(chessPos position) {
     treeNode *node = (treeNode *) malloc(sizeof(treeNode));
     checkMemoryAllocation(node);
@@ -140,6 +94,9 @@ treeNodeListCell *createTreeNodeListCell(chessPos position, treeNodeListCell *ne
     return listCell;
 }
 
+
+
+//----------------- lists helper functions -----------------------//
 // Initializes an empty list
 void makeEmptyList(treeNodeList *lst) {
     lst->head = lst->tail = NULL;
@@ -148,7 +105,7 @@ void makeEmptyList(treeNodeList *lst) {
 // Inserts a new integer at the end of the list
 void insertTNodeCellToEndList(treeNodeList *lst, chessPos position, treeNodeListCell *next) {
 
-    treeNodeListCell *listCell = createTreeNodeListCell(position,next);
+    treeNodeListCell *listCell = createTreeNodeListCell(position, next);
 
     if (isEmptyList(*lst)) {
         lst->head = lst->tail = listCell;
@@ -163,6 +120,9 @@ bool isEmptyList(treeNodeList lst) {
     return (lst.head == NULL);
 }
 
+
+
+//----------------- local helper functions -----------------------//
 void resetArr(bool prevPositions[BOARD_SIZE][BOARD_SIZE]) {
     for (int i = 0; i < BOARD_SIZE; ++i) {
         for (int j = 0; j < BOARD_SIZE; ++j) {

@@ -24,16 +24,15 @@ void findPossibleKnightMoves(int row, int column, chessPosArray *arr) {
      */
 
     // All possible moves of a knight
-    int X[8] = {2, 1, -1, -2, -2, -1, 1, 2};
-    int Y[8] = {1, 2, 2, 1, -1, -2, -2, -1};
+
     int logSize = 0, phySize = 2;
 
     // there are only 8 possible ways for the knight to move
     for (int i = 0; i < 8; i++) {
 
         // Position of knight after move
-        int x = row + X[i];
-        int y = column + Y[i];
+        int x = row + XValidMoves[i];
+        int y = column + YValidMoves[i];
 
         // count valid moves
         if (isValidMove(x, y)) {
