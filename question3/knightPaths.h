@@ -3,6 +3,13 @@
 
 #include "../structs.h"
 
+void makeEmptyList(treeNodeList *lst);
+bool isEmptyList(treeNodeList lst);
 pathTree findAllPossibleKnightPaths(chessPos *startingPosition);
+void findAllPossibleKnightPathsRec(treeNode *tNode, chessPosArray ***possibleMoves,bool prevPositions[BOARD_SIZE][BOARD_SIZE]);
+void resetArr(bool prevPositions[BOARD_SIZE][BOARD_SIZE]);
+void insertTNodeCellToEndList(treeNodeList *lst, chessPos position, treeNodeListCell *next);
+treeNode *createTreeNode(chessPos position);
+treeNodeListCell *createTreeNodeListCell(chessPos position, treeNodeListCell *next);
 
 #endif //FINALPROJECT_KNIGHTPATHS_H

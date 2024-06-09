@@ -17,10 +17,12 @@ void checkMemoryAllocation(void *ptr) {
 void makeEmptyChessPosArrayWithPos(chessPosArrayWithPos *arr) {
     arr->head = arr->tail = NULL;
 }
+
 // Returns true if the list is empty
 bool isEmptyChessPosArrayWithPosList(chessPosArrayWithPos lst) {
     return (lst.head == NULL);
 }
+
 // Frees all nodes and their associated data in a list
 void freeChessPosArrayWithPos(chessPosArrayWithPos *lst) {
     chessPosCellWithPos *curr = lst->head, *saver;
