@@ -6,13 +6,7 @@
 #include "../structs.h"
 #include "../helpersFuncs.h"
 
-//----------------------functions signatures -----------------//
-void display(chessPosList *lst);
-void printTable(chessPosArrayWithPos sortedChessPosList);
-chessPosArrayWithPos uniqueSortList(chessPosList lst);
-chessPosList getUserInput();
-
-//----------------------functions-----------------//
+//----------------------functions implementation-----------------//
 chessPosArrayWithPos uniqueSortList(chessPosList lst) {
     /*
      * Description: The function create sorted and unique chessPosList.
@@ -54,16 +48,6 @@ chessPosArrayWithPos uniqueSortList(chessPosList lst) {
     return sortedChessPosList;
 }
 
-void display(chessPosList *lst) {
-    /*
-     * Description: The function prints a chess board by a given chessPosList.
-     * Param chessPosList *lst: A given list of chess positions.
-     */
-
-    chessPosArrayWithPos sortedList = uniqueSortList(*lst);
-    printTable(sortedList);
-}
-
 void printTable(chessPosArrayWithPos sortedChessPosList) {
     /*
      * Description: The function prints the chess table with the original positions
@@ -91,11 +75,18 @@ void printTable(chessPosArrayWithPos sortedChessPosList) {
     }
 }
 
+void display(chessPosList *lst) {
+    /*
+     * Description: The function prints a chess board by a given chessPosList.
+     * Param chessPosList *lst: A given list of chess positions.
+     */
+
+    chessPosArrayWithPos sortedList = uniqueSortList(*lst);
+    printTable(sortedList);
+}
 
 
 //----------------- local helper functions -----------------------//
-
-
 chessPosList getUserInput() {
     chessPosList list = {NULL, NULL};
     char input[3];
@@ -140,9 +131,4 @@ chessPosList getUserInput() {
     }
 
     return list;
-}
-
-
-void test(){
-    printf("asdf");
 }

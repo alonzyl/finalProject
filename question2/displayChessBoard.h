@@ -3,11 +3,9 @@
 #ifndef UNTITLED_DISPLAYCHESSBOARD_H
 #define UNTITLED_DISPLAYCHESSBOARD_H
 
-chessPosList getUserInput();
-
-chessPosArrayWithPos sortList(chessPosList lst);
-
 void display(chessPosList *lst);
-void test();
+void printTable(chessPosArrayWithPos sortedChessPosList);
+chessPosArrayWithPos uniqueSortList(chessPosList lst);
+chessPosList getUserInput();
 
 #endif //UNTITLED_DISPLAYCHESSBOARD_H

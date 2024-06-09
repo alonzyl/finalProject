@@ -3,17 +3,9 @@
 #include "../structs.h"
 #include "../helpersFuncs.h"
 
-
 // TODO WHEN VALID MOVE TO SAVE chessPosArray ARRAY PROPERLY
-//----------------------functions signatures -----------------//
-void findPossibleKnightMoves(int row, int column, chessPosArray *arr);
-bool isValidMove(int x, int y);
-void freeChessPosArray(chessPosArray ***arr);
-chessPosArray ***populateChessPosArray();
-chessPosArray ***validKnightMoves();
 
-
-//----------------------functions-----------------//
+//----------------------functions implementation-----------------//
 void findPossibleKnightMoves(int row, int column, chessPosArray *arr) {
     /*
      * Description: The function fill a 2D array with all the possible valid
