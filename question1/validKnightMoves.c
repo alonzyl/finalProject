@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include "../structs.h"
 #include "../helpersFuncs.h"
-
+#include "./validKnightMoves.h"
 // TODO WHEN VALID MOVE TO SAVE chessPosArray ARRAY PROPERLY
 
 //----------------------functions implementation-----------------//
@@ -41,13 +41,12 @@ void findPossibleKnightMoves(int row, int column, chessPosArray *arr) {
         }
     }
     if (logSize < phySize) {
-        arr->positions = (chessPos *)realloc(arr->positions, logSize);
+        arr->positions = (chessPos *) realloc(arr->positions, logSize);
     }
 
 }
 
-chessPosArray ***validKnightMoves()
-{
+chessPosArray ***validKnightMoves() {
     /*
      * Description: The function creates a 2D chess board of size BOARD_SIZE and for each coordinate
      *              on the board, it lists all the validate moves that a knight can make from there.
@@ -67,8 +66,7 @@ chessPosArray ***validKnightMoves()
 }
 
 //----------------- helper functions -----------------------//
-bool isValidMove(int row, int column)
-{
+bool isValidMove(int row, int column) {
     /*
      * Description: The function validate if a given coordinate exist in a chess board.
      *
@@ -81,8 +79,7 @@ bool isValidMove(int row, int column)
     return row >= 0 && column >= 0 && row < BOARD_SIZE && column < BOARD_SIZE;
 }
 
-chessPosArray ***populateChessPosArray()
-{
+chessPosArray ***populateChessPosArray() {
     /*
      * Description: The function creates a chess board of size BOARD_SIZE.
      *
@@ -110,8 +107,7 @@ chessPosArray ***populateChessPosArray()
 }
 
 //   TODO free chess pos array!!!
-void freeChessPosArray(chessPosArray ***arr)
-{
+void freeChessPosArray(chessPosArray ***arr) {
     /*
      * Description: The function frees a given chessPossArray.
      *

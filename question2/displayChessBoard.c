@@ -5,6 +5,7 @@
 
 #include "../structs.h"
 #include "../helpersFuncs.h"
+#include "./displayChessBoard.h"
 
 //----------------------functions implementation-----------------//
 chessPosArrayWithPos uniqueSortList(chessPosList lst) {

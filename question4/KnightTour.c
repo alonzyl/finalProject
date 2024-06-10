@@ -3,13 +3,12 @@
 #include <stdbool.h>
 #include "../helpersFuncs.h"
 #include "../structs.h"
-#include "../question1/validKnightMoves.h"
 #include "KnightTour.h"
 
 
 void resetPrevPositionsArr(int prevPositions[BOARD_SIZE][BOARD_SIZE]);
 
-int solveKTUtil(int x, int y, int movei, int sol[BOARD_SIZE][BOARD_SIZE], chessPosList *lst);
+int findKnightPathCoveringR(int x, int y, int movei, int sol[BOARD_SIZE][BOARD_SIZE], chessPosList *lst);
 
 bool isValidKnightMove(int row, int column, int prevPositions[BOARD_SIZE][BOARD_SIZE]);
 
@@ -37,7 +36,7 @@ chessPosList *findKnightPathCoveringAllBoard(pathTree *path_tree) {
     sol[row][column] = 0;
     convertAndInsertPosition(lst, row, column);
 
-    if (solveKTUtil(row, column, 1, sol,lst) == 0) {
+    if (findKnightPathCoveringR(row, column, 1, sol,lst) == 0) {
         free(lst); // Free the list if no solution is found
         return NULL;
     }
@@ -48,7 +47,7 @@ chessPosList *findKnightPathCoveringAllBoard(pathTree *path_tree) {
 
 /* A recursive utility function to solve Knight Tour
    problem */
-int solveKTUtil(int x, int y, int movei, int sol[BOARD_SIZE][BOARD_SIZE], chessPosList *lst) {
+int findKnightPathCoveringR(int x, int y, int movei, int sol[BOARD_SIZE][BOARD_SIZE], chessPosList *lst) {
     int k, next_x, next_y;
     if (movei == BOARD_SIZE * BOARD_SIZE)
         return 1;
@@ -61,7 +60,7 @@ int solveKTUtil(int x, int y, int movei, int sol[BOARD_SIZE][BOARD_SIZE], chessP
             sol[next_x][next_y] = movei;
             convertAndInsertPosition(lst, next_x, next_y);
 
-            if (solveKTUtil(next_x, next_y, movei + 1, sol, lst) == 1)
+            if (findKnightPathCoveringR(next_x, next_y, movei + 1, sol, lst) == 1)
                 return 1;
             else {
                 sol[next_x][next_y] = -1; // backtracking

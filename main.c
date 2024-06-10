@@ -43,5 +43,5 @@ int main(void) {
     rootTemp.root = &treeTmp;
 
     findKnightPathCoveringAllBoard(&rootTemp);
-    printf("%d", test);
+//    printf("%d", test);
 }

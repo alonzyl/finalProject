@@ -4,6 +4,7 @@
 #include "../helpersFuncs.h"
 #include "../structs.h"
 #include "../question1/validKnightMoves.h"
+#include "./knightPaths.h"
 
 //----------------------functions-----------------//
 pathTree findAllPossibleKnightPaths(chessPos *startingPosition) {
@@ -43,7 +44,7 @@ void findAllPossibleKnightPathsRec(treeNode *tNode, chessPosArray ***possibleMov
     chessPosArray validPositions = *possibleMoves[currRow][currCol];
     int amountOfMoves = validPositions.size;
 
-    prevPositions[row][col] = true;  // to prevent subtrees of that tNode include that tNode in their subtrees
+    prevPositions[currRow][currCol] = true;  // to prevent subtrees of that tNode include that tNode in their subtrees
 
     for (int i = 0; i < amountOfMoves; ++i) {
         int nextPosRow = UPPERCASE_TO_DIGIT(validPositions.positions[i][0]);
@@ -54,7 +55,7 @@ void findAllPossibleKnightPathsRec(treeNode *tNode, chessPosArray ***possibleMov
             findAllPossibleKnightPathsRec(tNode->next_possible_positions.tail->node, possibleMoves, prevPositions);
         }
     }
-    prevPositions[row][col] = false;  // to let tNodes from the same tree level include that node in their subtrees.
+    prevPositions[currRow][currCol] = false;  // to let tNodes from the same tree level include that node in their subtrees.
 }
 
 

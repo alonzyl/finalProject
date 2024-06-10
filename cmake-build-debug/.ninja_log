@@ -39,3 +39,12 @@
 143	222	1717940276236972369	untitled	b515aa1021f82b79
 1	35	1717940329630217356	CMakeFiles/untitled.dir/main.c.o	43add999ffcbeb56
 35	66	1717940329664681775	untitled	b515aa1021f82b79
+3	174	1718012265649574227	CMakeFiles/untitled.dir/question4/KnightTour.c.o	f4e7f2f2c472628f
+2	174	1718012265649120100	CMakeFiles/untitled.dir/helpersFuncs.c.o	ab0aa249a4f29643
+2	174	1718012265649221101	CMakeFiles/untitled.dir/question2/displayChessBoard.c.o	2d18fe49bfb57dd6
+1	29	1718012285322672391	CMakeFiles/untitled.dir/main.c.o	43add999ffcbeb56
+2	35	1718012532486884680	CMakeFiles/untitled.dir/question1/validKnightMoves.c.o	37382b700f212153
+3	32	1718012604730994717	CMakeFiles/untitled.dir/question4/KnightTour.c.o	f4e7f2f2c472628f
+2	32	1718012604730644173	CMakeFiles/untitled.dir/question2/displayChessBoard.c.o	2d18fe49bfb57dd6
+2	36	1718012640803718216	CMakeFiles/untitled.dir/question3/knightPaths.c.o	80de7d870605b99e
+36	134	1718012640837877040	untitled	b515aa1021f82b79
