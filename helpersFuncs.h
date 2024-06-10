@@ -7,13 +7,19 @@
 #define UPPERCASE_TO_DIGIT(c) (c - 'A')
 #define INT_TO_CHAR_NUM(d) (d + '1')
 #define CHAR_TO_INT_NUM(c) (c - '1')
+#define MAX_KNIGHT_MOVES_VARIATIONS 8
+#define MIN_PHY_SIZE 2
+#define MIN_LOG_SIZE 0
 
+
+//-----------------overall helper functions ---------------//
 void checkMemoryAllocation(void *ptr);
 
 
 //-----------------all valid moves a knight can do ---------------//
-int XValidMoves[8];
-int YValidMoves[8];
+int XValidMoves[MAX_KNIGHT_MOVES_VARIATIONS];
+int YValidMoves[MAX_KNIGHT_MOVES_VARIATIONS];
+
 
 //-----------------displayChessBoard helper functions---------------//
 void makeEmptyChessPosArrayWithPos(chessPosArrayWithPos *arr);
@@ -27,5 +33,10 @@ int positionToNum(chessPos position);
 
 //-----------------validKnightMoves helper functions---------------//
 bool alreadyVisitedPosition(treeNodeListCell *lst, chessPos currPos);
+
+
+//-----------------main helper functions---------------//
+void getUserInput(chessPos *startingPosition);
+
 
 #endif //FINALPROJECT_HELPERSFUNCS_H

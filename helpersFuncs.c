@@ -108,3 +108,22 @@ bool alreadyVisitedPosition(treeNodeListCell *lst, chessPos currPos) {
 
 int XValidMoves[8] = {2, 1, -1, -2, -2, -1, 1, 2};
 int YValidMoves[8] = {1, 2, 2, 1, -1, -2, -2, -1};
+
+
+//-----------------main helper functions---------------//
+void getUserInput(chessPos *startingPosition) {
+    char row, col;
+
+    printf("please enter position: ");
+    scanf("%c %c", &row, &col);
+
+    if (UPPERCASE_TO_DIGIT(row) >= 0 && UPPERCASE_TO_DIGIT(row) <= 5 && CHAR_TO_INT_NUM(col) >= 0 &&
+        CHAR_TO_INT_NUM(col) <= 5) {
+        (*startingPosition)[0] = row;
+        (*startingPosition)[1] = col;
+
+    } else
+        printf("Invalid input");
+
+}
+

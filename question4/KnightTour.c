@@ -20,7 +20,7 @@ chessPosList *findKnightPathCoveringAllBoard(pathTree *path_tree) {
     prevPositions[row][column] = true;
     convertAndInsertPosition(lst, row, column);
 
-    if (findKnightPathCoveringRec(row, column, 1, prevPositions, lst) == false) {
+    if (!findKnightPathCoveringRec(row, column, 1, prevPositions, lst)) {
         free(lst); // Free the list if no solution is found
         return NULL;
     }

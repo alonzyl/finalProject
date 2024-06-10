@@ -6,6 +6,6 @@
 void display(chessPosList *lst);
 void printTable(chessPosArrayWithPos sortedChessPosList);
 chessPosArrayWithPos uniqueSortList(chessPosList lst);
-chessPosList getUserInput();
+//chessPosList getUserInput();
 
 #endif //UNTITLED_DISPLAYCHESSBOARD_H

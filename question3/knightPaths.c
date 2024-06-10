@@ -6,7 +6,7 @@
 #include "../question1/validKnightMoves.h"
 #include "./knightPaths.h"
 
-//----------------------functions-----------------//
+//----------------------core functions-----------------//
 pathTree findAllPossibleKnightPaths(chessPos *startingPosition) {
     /*
      * Description: The function creates a tree that represents all the possible knight paths from a given position.
@@ -25,6 +25,7 @@ pathTree findAllPossibleKnightPaths(chessPos *startingPosition) {
 
     findAllPossibleKnightPathsRec(resTree.root, possibleMoves, prevPositions);
 
+    freeChessPosArray(possibleMoves);
     return resTree;
 }
 
@@ -99,9 +100,36 @@ treeNodeListCell *createTreeNodeListCell(chessPos position, treeNodeListCell *ne
     return listCell;
 }
 
+void freePathTree(pathTree *tree) {
+    if (tree != NULL) {
+        freeTreeNode(tree->root);
+        free(tree);
+    }
+}
 
-//----------------- lists helper functions -----------------------//
-void makeEmptyList(treeNodeList *lst) {
+void freeTreeNodeList(treeNodeList *list) {
+    treeNodeListCell *current = list->head;
+    treeNodeListCell *next;
+
+    while (current != NULL) {
+        next = current->next;
+        freeTreeNode(current->node);
+        free(current);
+        current = next;
+    }
+
+    list->head = list->tail = NULL;
+}
+
+void freeTreeNode(treeNode *node) {
+    if (node != NULL) {
+        freeTreeNodeList(&(node->next_possible_positions));
+        free(node);
+    }
+}
+
+//----------------- lists helper functions -----------------------/
+void makeEmptyList (treeNodeList *lst) {
     /*
      * Description: The function initializes a given list.
      * Param treeNodeList *lst: A given list.

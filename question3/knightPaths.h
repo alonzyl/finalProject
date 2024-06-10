@@ -2,6 +2,7 @@
 #define FINALPROJECT_KNIGHTPATHS_H
 
 #include "../structs.h"
+#include <stdbool.h>
 
 void makeEmptyList(treeNodeList *lst);
 bool isEmptyList(treeNodeList lst);
@@ -11,5 +12,8 @@ void resetPrevPosArr(bool prevPositions[BOARD_SIZE][BOARD_SIZE]);
 void insertTNodeCellToEndList(treeNodeList *lst, chessPos position, treeNodeListCell *next);
 treeNode *createTreeNode(chessPos position);
 treeNodeListCell *createTreeNodeListCell(chessPos position, treeNodeListCell *next);
+void freePathTree(pathTree *tree);
+void freeTreeNodeList(treeNodeList *list);
+void freeTreeNode(treeNode *node);
 
 #endif //FINALPROJECT_KNIGHTPATHS_H

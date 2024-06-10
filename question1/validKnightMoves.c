@@ -3,7 +3,6 @@
 #include "../structs.h"
 #include "../helpersFuncs.h"
 #include "./validKnightMoves.h"
-// TODO WHEN VALID MOVE TO SAVE chessPosArray ARRAY PROPERLY
 
 //----------------------functions implementation-----------------//
 void findPossibleKnightMoves(int row, int column, chessPosArray *arr) {
@@ -15,12 +14,9 @@ void findPossibleKnightMoves(int row, int column, chessPosArray *arr) {
      * Param chessPosArray: A given chess board positions array.
      */
 
-    // All possible moves of a knight
+    int logSize = MIN_LOG_SIZE, phySize = MIN_PHY_SIZE;
 
-    int logSize = 0, phySize = 2;
-
-    // there are only 8 possible ways for the knight to move
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < MAX_KNIGHT_MOVES_VARIATIONS; i++) {
 
         // Position of knight after move
         int x = row + XValidMoves[i];
@@ -40,10 +36,10 @@ void findPossibleKnightMoves(int row, int column, chessPosArray *arr) {
             logSize++;
         }
     }
+
     if (logSize < phySize) {
         arr->positions = (chessPos *) realloc(arr->positions, logSize);
     }
-
 }
 
 chessPosArray ***validKnightMoves() {
@@ -106,7 +102,6 @@ chessPosArray ***populateChessPosArray() {
     return arr;
 }
 
-//   TODO free chess pos array!!!
 void freeChessPosArray(chessPosArray ***arr) {
     /*
      * Description: The function frees a given chessPossArray.
