@@ -31,7 +31,7 @@ int main(void) {
 //    chessPosList *findKnightPathCoveringAllBoard(pathTree *path_tree)
     chessPos pos;
     pos[0] = 'A';
-    pos[1] = '1';
+    pos[1] = '2';
 
     treeNode treeTmp;
     treeNodeList listTmp;

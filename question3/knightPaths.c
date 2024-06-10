@@ -18,7 +18,7 @@ pathTree findAllPossibleKnightPaths(chessPos *startingPosition) {
     pathTree resTree;
 
     bool prevPositions[BOARD_SIZE][BOARD_SIZE];  // bool map of the positions that the knight had visited.
-    resetArr(prevPositions);
+    resetPrevPosArr(prevPositions);
 
     treeNode *root = createTreeNode(*startingPosition);
     resTree.root = root;
@@ -140,7 +140,7 @@ bool isEmptyList(treeNodeList lst) {
 
 
 //----------------- local helper functions -----------------------//
-void resetArr(bool prevPositions[BOARD_SIZE][BOARD_SIZE]) {
+void resetPrevPosArr(bool prevPositions[BOARD_SIZE][BOARD_SIZE]) {
     /*
      * Description: The function initialize a given 2D bool array with false values.
      * Param bool prevPositions[BOARD_SIZE][BOARD_SIZE]:
