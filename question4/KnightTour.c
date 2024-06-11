@@ -32,7 +32,7 @@ chessPosList *findKnightPathCoveringAllBoard(pathTree *path_tree) {
    problem */
 bool findKnightPathCoveringRec(int x, int y, int amountOfMoves, bool prevPositions[BOARD_SIZE][BOARD_SIZE], chessPosList *lst) {
     if (amountOfMoves == BOARD_SIZE * BOARD_SIZE)
-        return 1;
+        return true;
 
     for (int i = 0; i < 8; i++) {
         int nextX = x + XValidMoves[i];

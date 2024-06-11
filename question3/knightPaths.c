@@ -103,7 +103,6 @@ treeNodeListCell *createTreeNodeListCell(chessPos position, treeNodeListCell *ne
 void freePathTree(pathTree *tree) {
     if (tree != NULL) {
         freeTreeNode(tree->root);
-        free(tree);
     }
 }
 
@@ -118,7 +117,7 @@ void freeTreeNodeList(treeNodeList *list) {
         current = next;
     }
 
-    list->head = list->tail = NULL;
+//    list->head = list->tail = NULL;
 }
 
 void freeTreeNode(treeNode *node) {
